@@ -1,0 +1,80 @@
+package proyecto;
+
+import javax.swing.JOptionPane;
+
+public class Universidad {
+    
+    private String nombreUniversidad;
+    private String nombreRector;
+    private DeptoExt departamentoExt;
+
+    /*-----------SOBRECARGA DE CONSTRUCTORES-----------*/
+    public Universidad() {
+        
+    }
+
+    public Universidad(String nombreUniversidad, String nombreRector, DeptoExt departamentoExt) {
+        this.nombreUniversidad = nombreUniversidad;
+        this.nombreRector = nombreRector;
+        this.departamentoExt = departamentoExt;
+    }
+    /*-------------------------------------------------*/
+    public String getNombreUniversidad() {
+        return nombreUniversidad;
+    }
+
+    public void setNombreUniversidad(String nombreUniversidad) {
+        this.nombreUniversidad = nombreUniversidad;
+    }
+
+    public String getNombreRector() {
+        return nombreRector;
+    }
+
+    public void setNombreRector(String nombreRector) {
+        this.nombreRector = nombreRector;
+    }
+
+    public DeptoExt getDepartamentoExt() {
+        return departamentoExt;
+    }
+
+    public void setDepartamentoExt(DeptoExt departamentoExt) {
+        this.departamentoExt = departamentoExt;
+    }
+    /*-----------Delegacion de responsabilidades(DeptoExt)-----------*/
+    public void MenuEncargado(){
+        departamentoExt.MenuEncargado();
+    }
+    
+    public void MenuActividades(){
+        departamentoExt.MenuActividades();
+    }
+     
+    /*Menu principal desplegable*/
+    public void Menu(){    
+        
+        String[] opcionesMenu = {"Menu Encargado","Menu Actividades","Salir"};    
+        String respuesta;        
+        byte control = 0;
+        
+        while(control == 0){
+            
+            respuesta = (String)JOptionPane.showInputDialog(null,"Seleccione su opcion","Opciones",JOptionPane.DEFAULT_OPTION,null,opcionesMenu,opcionesMenu[0]);
+        
+            switch(respuesta){
+                case "Menu Encargado":
+                    departamentoExt.MenuEncargado();
+                    break
+                            ;
+                case "Menu Actividades":
+                    departamentoExt.MenuActividades();
+                    break;
+                    
+                case "Salir":
+                    control = 1;
+                    break;     
+            }
+        }
+    }
+}

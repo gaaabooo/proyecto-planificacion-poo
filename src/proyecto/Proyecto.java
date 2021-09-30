@@ -60,6 +60,5 @@ public class Proyecto {
         System.out.println(universidad1.getDepartamentoExt().mostrarActividad());
          */
         universidad1.Menu();
-                
     }
 }

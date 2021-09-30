@@ -159,8 +159,8 @@ public class DeptoExt {
     
     public void MenuActividades(){
         
-        String[] opcionesMenu = {"Agregar Actividad","Eliminar Actividad por nombre","Eliminar Actividad por Encargado","Eliminar Actividad","Mostrar Listado de Actividades y sus datos","Buscar Actividad por nombre","Buscar Actividad","Buscar Actividad por Encargado","Mostrar Listado de Actividades","Menu Estudiantes(Para una sola Actividad)","Total de Estudiantes participantes de cierta carrera" ,"Salir"};    
-        String respuesta, buffer, buffer2, buffer3, buffer4;        
+        String[] opcionesMenu = {"Agregar Actividad","Eliminar Actividad por nombre","Eliminar Actividad por Encargado","Eliminar Actividad","Mostrar Listado de Actividades y sus datos","Buscar Actividad por nombre","Buscar Actividad","Buscar Actividad por Encargado","Mostrar Listado de Actividades","Menu Estudiantes(Para una sola Actividad)","Total de Estudiantes participantes de cierta carrera","Busqueda Intensiva de Estudiante","Busqueda Intensiva de Estudiante por rut completo","Salir"};    
+        String respuesta, buffer, buffer2, buffer3, buffer4, buffer5;        
         byte control = 0;
         
         while(control == 0){
@@ -265,7 +265,7 @@ public class DeptoExt {
                     Encargado encargado2 = new Encargado(buffer,Integer.parseInt(buffer2),buffer3,Integer.parseInt(buffer4));
                     
                     if(actividades.buscarActividad(encargado2) == null){
-                         JOptionPane.showMessageDialog(null, "La Actividad que desea buscar no existe");
+                        JOptionPane.showMessageDialog(null, "La Actividad que desea buscar no existe");
                     }
                     else {
                         JOptionPane.showMessageDialog(null, "La Actividad si se encuentra dentro de la lista");
@@ -286,6 +286,36 @@ public class DeptoExt {
                 case "Total de Estudiantes participantes de cierta carrera":
                     buffer = JOptionPane.showInputDialog("Ingrese el nombre de la Carrera que desea contabilizar");
                     actividades.estudiantesParticipantesCarreraTotal(buffer);
+                    JOptionPane.showMessageDialog(null, "Operación realizada correctamente");
+                    break;
+                    
+                case "Busqueda Intensiva de Estudiante por rut completo":
+                    buffer = JOptionPane.showInputDialog("Ingrese el rut del Estudiante(sin puntos)") ;
+                    buffer2 = JOptionPane.showInputDialog("Ingrese el digito verificador del rut del estudiante") ;
+                    
+                    if(actividades.busquedaIntensivaEstudiante(Integer.parseInt(buffer), buffer2) == null){
+                        JOptionPane.showMessageDialog(null, "El estudiante que desea buscar no existe");
+                    }
+                    else{
+                        JOptionPane.showMessageDialog(null, "El estudiante que se buscar se ha encontrado de forma exitosa");
+                    }
+                    JOptionPane.showMessageDialog(null, "Operación realizada correctamente");
+                    break;
+                    
+                case "Busqueda Intensiva de Estudiante":
+                    buffer = JOptionPane.showInputDialog("Ingrese el nombre del Estudiante");
+                    buffer2 = JOptionPane.showInputDialog("Ingrese el rut del Estudiante (sin puntos ni digito verificador)");
+                    buffer3 = JOptionPane.showInputDialog("Ingrese el digito verificador del rut del Estudiante");
+                    buffer4 = JOptionPane.showInputDialog("Ingrese la edad del Encargado");
+                    buffer5 = JOptionPane.showInputDialog("Ingrese la carrera del Estudiante");
+                    Estudiante estudiante1 = new Estudiante(buffer,Integer.parseInt(buffer2),buffer3,Integer.parseInt(buffer4),buffer5);
+                    
+                    if(actividades.busquedaIntensivaEstudiante(estudiante1) == null) {
+                        JOptionPane.showMessageDialog(null, "El estudiante que desea buscar no existe");
+                    }
+                    else {
+                        JOptionPane.showMessageDialog(null, "El estudiante que se buscar se ha encontrado de forma exitosa");
+                    }
                     JOptionPane.showMessageDialog(null, "Operación realizada correctamente");
                     break;
                     

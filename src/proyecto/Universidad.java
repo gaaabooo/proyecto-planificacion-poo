@@ -1,5 +1,8 @@
 package proyecto;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import javax.swing.JOptionPane;
 
 public class Universidad {
@@ -54,7 +57,7 @@ public class Universidad {
     /*Menu principal desplegable*/
     public void Menu(){    
         
-        String[] opcionesMenu = {"Menu Encargado","Menu Actividades","Salir"};    
+        String[] opcionesMenu = {"Menu Encargado","Menu Actividades","Crear Reporte","Salir"};    
         String respuesta;        
         byte control = 0;
         
@@ -65,16 +68,39 @@ public class Universidad {
             switch(respuesta){
                 case "Menu Encargado":
                     departamentoExt.MenuEncargado();
-                    break
-                            ;
+                    break;
                 case "Menu Actividades":
                     departamentoExt.MenuActividades();
                     break;
-                    
+                case "Crear Reporte":
+                    this.crearReporte();
+                    JOptionPane.showMessageDialog(null, "El reporte se ha creado de forma correcta");
+                    break;                    
                 case "Salir":
                     control = 1;
                     break;     
             }
+        }
+    }
+    
+    public void crearReporte() {
+        
+        try {           
+            
+            File file = new File("Reporte.txt");
+            
+            // Si el archivo no existe es creado
+            if (!file.exists()) {
+                file.createNewFile();
+            }
+            
+            FileWriter fw = new FileWriter(file);
+            BufferedWriter bw = new BufferedWriter(fw);
+            bw.write(departamentoExt.mostrarActividad());
+            bw.close();
+            
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }

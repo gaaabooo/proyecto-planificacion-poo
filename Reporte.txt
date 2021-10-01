@@ -1,0 +1,42 @@
+Actividad: Trekking
+Nombre encargado: Luis Andaur
+----Estudiantes Participantes----
+Estudiante: Cristiano Ronaldo
+Rut: 20360953-1
+Carrera del Estudiante: Ing. de Ejecucion en Informatica
+Estudiante: Ivan Zamorano
+Rut: 20010604-k
+Carrera del Estudiante: Ing Civil Informatica
+Estudiante: Mbappe
+Rut: 20320114-1
+Carrera del Estudiante: Ing. Civil Industrial
+
+
+Actividad: Yoga
+Nombre encargado: Pedro Engel
+----Estudiantes Participantes----
+Estudiante: Cristiano Ronaldo
+Rut: 20360953-1
+Carrera del Estudiante: Ing. de Ejecucion en Informatica
+Estudiante: Ivan Zamorano
+Rut: 20010604-k
+Carrera del Estudiante: Ing Civil Informatica
+Estudiante: Mbappe
+Rut: 20320114-1
+Carrera del Estudiante: Ing. Civil Industrial
+
+
+Actividad: Stand Up Comedy
+Nombre encargado: Edo Caroe
+----Estudiantes Participantes----
+Estudiante: Cristiano Ronaldo
+Rut: 20360953-1
+Carrera del Estudiante: Ing. de Ejecucion en Informatica
+Estudiante: Ivan Zamorano
+Rut: 20010604-k
+Carrera del Estudiante: Ing Civil Informatica
+Estudiante: Mbappe
+Rut: 20320114-1
+Carrera del Estudiante: Ing. Civil Industrial
+
+

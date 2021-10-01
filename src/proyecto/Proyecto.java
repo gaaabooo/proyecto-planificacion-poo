@@ -49,16 +49,7 @@ public class Proyecto {
         
         /*Ejemplo Universidad*/
         Universidad universidad1 = new Universidad("Pontificia Universidad Catolica de Valparaiso", "Claudio Elórtegui Raffo",departamentoExt);
-        
-        /*
-        IMPRESION DE EJEMPLOS
-         */ /*System.out.print("Universidad: ");
-        System.out.println(universidad1.getNombreUniversidad());
-        System.out.print("Rector: ");
-        System.out.println(universidad1.getNombreRector()+"\n");
-        System.out.print(">----lISTA DE ACTIVIDADES----<\n\n");
-        System.out.println(universidad1.getDepartamentoExt().mostrarActividad());
-         */
+ 
         universidad1.Menu();
     }
 }

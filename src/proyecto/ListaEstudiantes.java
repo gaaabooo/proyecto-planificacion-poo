@@ -94,4 +94,35 @@ public class ListaEstudiantes {
         }
         return null;
     }
+    /*-----------SOBRECARGA DE METODOS(modificarDatosEstudiante)-----------*/
+    
+    /*Si se quiere modificar todos los datos*/
+    public void modificarDatosEstudiante(Estudiante estudiante1, String nombre, int rut, String dv, int edad, String carreraEstudiante) {
+        estudiante1.setNombre(nombre);
+        estudiante1.setRut(rut);
+        estudiante1.setDv(dv);
+        estudiante1.setCarreraEstudiante(carreraEstudiante);
+    }
+    
+    /*Si solo se quiere modificar el nombre*/
+    public void modificarDatosEstudiante(Estudiante estudiante1, String nombre) {
+        estudiante1.setNombre(nombre);
+    }
+    
+    /*Si se quiere modificar el rut completo*/
+    public void modificarDatosEstudiante(Estudiante estudiante1, int rut, String dv){
+        estudiante1.setRut(rut);
+        estudiante1.setDv(dv);
+    }
+    
+    /*Si solo se quiere modificar el nombre y la carrera*/
+    public void modificarDatosEstudiante(Estudiante estudiante1, String nombre, String carreraEstudiante){
+        estudiante1.setNombre(nombre);
+        estudiante1.setCarreraEstudiante(carreraEstudiante);
+    }
+    
+    /*Si solo se quiere modificar la edad*/
+    public void modificarDatosEstudiante(Estudiante estudiante1, int edad){
+        estudiante1.setEdad(edad);
+    }
 }

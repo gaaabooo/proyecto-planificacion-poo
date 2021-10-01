@@ -114,6 +114,7 @@ public class ListaActividades {
         return texto;
     }
     
+    /**-----------SOBRECARGA DE METODOS(buscarIntensivaEstudiante)-----------*/
     public Estudiante busquedaIntensivaEstudiante(Estudiante estudiante1) {
         for (Actividad actividad : arregloActividades) {
             if(actividad.buscarEstudiante(estudiante1).equals(estudiante1)){

@@ -43,4 +43,30 @@ public class ColeccionEncargados {
         }
         return texto;
     }
+    
+    /*-----------SOBRECARGA DE METODOS(modificarDatosEncargado)-----------*/
+    
+    /*Si se quiere modificar todos los datos*/
+    public void modificarDatosEncargado(Encargado encargado1, String nombre, int rut, String dv, int edad){
+        encargado1.setNombre(nombre);
+        encargado1.setRut(rut);
+        encargado1.setDv(dv);
+        encargado1.setEdad(edad);
+    }
+    
+    /*Si solo se quiere modificar el nombre*/
+    public void modificarDatosEncargado(Encargado encargado1, String nombre){
+        encargado1.setNombre(nombre);
+    }
+    
+    /*Si se quiere modificar el rut completo*/
+    public void modificarDatosEncargado(Encargado encargado1, int rut, String dv){
+        encargado1.setRut(rut);
+        encargado1.setDv(dv);
+    }
+    
+    /*Si solo se quiere modificar la edad*/
+    public void modificarDatosEstudiante(Encargado encargado1, int edad){
+        encargado1.setEdad(edad);
+    }
 }

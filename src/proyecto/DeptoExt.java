@@ -98,10 +98,26 @@ public class DeptoExt {
         return actividades.busquedaIntensivaEstudiante(rut, dv);
     }
     
+    public void modificarDatosEncargado(Encargado encargado1, String nombre, int rut, String dv, int edad){
+        encargados.modificarDatosEncargado(encargado1, nombre, rut, dv, edad);
+    }
+    
+    public void modificarDatosEncargado(Encargado encargado1, String nombre){
+        encargados.modificarDatosEncargado(encargado1, nombre);
+    }
+    
+    public void modificarDatosEncargado(Encargado encargado1, int rut, String dv){
+         encargados.modificarDatosEncargado(encargado1, rut, dv);
+    }
+    
+    public void modificarDatosEstudiante(Encargado encargado1, int edad){
+        encargados.modificarDatosEstudiante(encargado1, edad);
+    }
+     
     public void MenuEncargado(){
         
-        String[] opcionesMenu = {"Agregar Encargado","Mostrar Encargados","Eliminar Encargado por rut completo","Buscar Encargado","Eliminar Encargado por rut y digito verificador(por separado)","Salir"};    
-        String respuesta, buffer, buffer2, buffer3, buffer4;        
+        String[] opcionesMenu = {"Agregar Encargado","Mostrar Encargados","Eliminar Encargado por rut completo","Buscar Encargado","Eliminar Encargado por rut y digito verificador(por separado)","Modificar datos Encargado(todos los datos)","Modificar datos Encargado(solo rut completo)","Modificar datos Encargado(solo edad)","Modificar datos Encargado(solo nombre)","Salir"};    
+        String respuesta, buffer, buffer2, buffer3, buffer4, buffer5;        
         byte control = 0;
         
         while(control == 0){
@@ -147,6 +163,61 @@ public class DeptoExt {
                     buffer = JOptionPane.showInputDialog("Ingrese el rut del Encargado(sin puntos ni digito verificador)");
                     buffer2 = JOptionPane.showInputDialog("Ingrese el digito verificador del Encargado");
                     encargados.eliminarEncargado(Integer.parseInt(buffer), buffer2);
+                    JOptionPane.showMessageDialog(null, "Operación realizada correctamente");
+                    break;
+                    
+                case "Modificar datos Encargado(todos los datos)":
+                    buffer = JOptionPane.showInputDialog("Ingrese el rut del Encargado");
+                    if(encargados.buscarEncargado(buffer) == null){
+                        JOptionPane.showMessageDialog(null, "El Encargado que desea modificar no existe");
+                        break;  
+                    }
+                    else {
+                        buffer2 = JOptionPane.showInputDialog("Ingrese el nuevo nombre del Encargado");
+                        buffer3 = JOptionPane.showInputDialog("Ingrese el nuevo rut del Encargado(sin puntos ni digito verificador)");
+                        buffer4 = JOptionPane.showInputDialog("Ingrese el nuevp digito verificador del rut del Encargado");
+                        buffer5 = JOptionPane.showInputDialog("Ingrese la nueva edad del Encargado");
+                        encargados.modificarDatosEncargado(encargados.buscarEncargado(buffer), buffer2, Integer.parseInt(buffer3), buffer4, Integer.parseInt(buffer5));
+                    }
+                    JOptionPane.showMessageDialog(null, "Operación realizada correctamente");
+                    break;
+                    
+                case "Modificar datos Encargado(solo rut completo)":
+                    buffer = JOptionPane.showInputDialog("Ingrese el rut del Encargado");
+                    if(encargados.buscarEncargado(buffer) == null){
+                        JOptionPane.showMessageDialog(null, "El Encargado que desea modificar no existe");
+                        break;  
+                    }
+                    else {
+                        buffer2 = JOptionPane.showInputDialog("Ingrese el digito verificador del Encargado");
+                        encargados.modificarDatosEncargado(encargados.buscarEncargado(buffer),Integer.parseInt(buffer), buffer2);
+                    }
+                    JOptionPane.showMessageDialog(null, "Operación realizada correctamente");
+                    break;
+                    
+                case "Modificar datos Encargado(solo nombre)":
+                    buffer = JOptionPane.showInputDialog("Ingrese el rut del Encargado");
+                    if(encargados.buscarEncargado(buffer) == null){
+                        JOptionPane.showMessageDialog(null, "El Encargado que desea modificar no existe");
+                        break;  
+                    }
+                    else {
+                        buffer2 = JOptionPane.showInputDialog("Ingrese el nuevo nombre del Encargado");
+                        encargados.modificarDatosEncargado(encargados.buscarEncargado(buffer),buffer2);
+                    }
+                    JOptionPane.showMessageDialog(null, "Operación realizada correctamente");
+                    break;
+                    
+                case "Modificar datos Encargado(solo edad)":
+                    buffer = JOptionPane.showInputDialog("Ingrese el rut del Encargado");
+                    if(encargados.buscarEncargado(buffer) == null){
+                        JOptionPane.showMessageDialog(null, "El Encargado que desea modificar no existe");
+                        break;  
+                    }
+                    else {
+                        buffer2 = JOptionPane.showInputDialog("Ingrese la nueva edad del Encargado");
+                        encargados.modificarDatosEstudiante(encargados.buscarEncargado(buffer), Integer.parseInt(buffer2)) ;
+                    }
                     JOptionPane.showMessageDialog(null, "Operación realizada correctamente");
                     break;
                     

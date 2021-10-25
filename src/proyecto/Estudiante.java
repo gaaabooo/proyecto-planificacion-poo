@@ -28,6 +28,12 @@ public class Estudiante extends persona {
     }
 
     @Override
+    public String toString() {
+        return "Encargado\n" + "Nombre: " + nombre + "\n" + "Rut: " + rut + "-" + dv + "\n" + "Edad:" + edad + "\n" + "Carrera del Estudiante: " + carreraEstudiante;
+    }
+
+
+    @Override
     public void participarActividad(){
 
     }

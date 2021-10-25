@@ -117,7 +117,7 @@ public class DeptoExt {
     public void MenuEncargado(){
         
         String[] opcionesMenu = {"Agregar Encargado","Mostrar Encargados","Eliminar Encargado por rut completo","Buscar Encargado","Eliminar Encargado por rut y digito verificador(por separado)","Modificar datos Encargado(todos los datos)","Modificar datos Encargado(solo rut completo)","Modificar datos Encargado(solo edad)","Modificar datos Encargado(solo nombre)","Salir"};    
-        String respuesta, buffer, buffer2, buffer3, buffer4, buffer5;        
+        String respuesta, buffer, buffer2, buffer3, buffer4, buffer5, buffer6;        
         byte control = 0;
         
         while(control == 0){
@@ -131,6 +131,7 @@ public class DeptoExt {
                     buffer2 = JOptionPane.showInputDialog("Ingrese el rut del Encargado(sin puntos ni digito verificador)");
                     buffer3 = JOptionPane.showInputDialog("Ingrese el digito verificador del rut del Encargado");
                     buffer4 = JOptionPane.showInputDialog("Ingrese la edad del Encargado");
+                    buffer5 = JOptionPane.showInputDialog("Ingrese el correo eletronico del Encargado");
                     Encargado encargado1 = new Encargado(buffer,Integer.parseInt(buffer2),buffer3,Integer.parseInt(buffer4));
                     encargados.agregarEncargado(encargado1);
                     JOptionPane.showMessageDialog(null, "Operación realizada correctamente");
@@ -177,6 +178,7 @@ public class DeptoExt {
                         buffer3 = JOptionPane.showInputDialog("Ingrese el nuevo rut del Encargado(sin puntos ni digito verificador)");
                         buffer4 = JOptionPane.showInputDialog("Ingrese el nuevp digito verificador del rut del Encargado");
                         buffer5 = JOptionPane.showInputDialog("Ingrese la nueva edad del Encargado");
+                        buffer6 = JOptionPane.showInputDialog("Ingrese el correo electronico del Encargado");
                         encargados.modificarDatosEncargado(encargados.buscarEncargado(buffer), buffer2, Integer.parseInt(buffer3), buffer4, Integer.parseInt(buffer5));
                     }
                     JOptionPane.showMessageDialog(null, "Operación realizada correctamente");

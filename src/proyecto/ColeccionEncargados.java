@@ -47,11 +47,12 @@ public class ColeccionEncargados {
     /*-----------SOBRECARGA DE METODOS(modificarDatosEncargado)-----------*/
     
     /*Si se quiere modificar todos los datos*/
-    public void modificarDatosEncargado(Encargado encargado1, String nombre, int rut, String dv, int edad){
+    public void modificarDatosEncargado(Encargado encargado1, String nombre, int rut, String dv, int edad, String correoElectronico){
         encargado1.setNombre(nombre);
         encargado1.setRut(rut);
         encargado1.setDv(dv);
         encargado1.setEdad(edad);
+        encargado1.setCorreoElectronico(correoElectronico)
     }
     
     /*Si solo se quiere modificar el nombre*/

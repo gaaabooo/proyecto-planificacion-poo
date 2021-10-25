@@ -27,7 +27,7 @@ public class Encargado extends persona {
 
     @Override
     public String toString() {
-        return "Encargado\n" + "Nombre: " + nombre + "\n" + "Rut: " + rut + "-" + dv + "\n" + "Edad:" + edad ;
+        return "Encargado\n" + "Nombre: " + nombre + "\n" + "Rut: " + rut + "-" + dv + "\n" + "Edad:" + edad + "\n" +"Correo Electronico:" + correoElectronico;
     }
 
     @Override

@@ -1,6 +1,6 @@
 package proyecto;
 
-public class Encargado extends persona {
+public class Encargado extends Persona {
     
     private String correoElectronico;
     

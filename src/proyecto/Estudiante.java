@@ -1,6 +1,6 @@
 package proyecto;
 
-public class Estudiante extends persona {
+public class Estudiante extends Persona {
     
     private String carreraEstudiante;
     

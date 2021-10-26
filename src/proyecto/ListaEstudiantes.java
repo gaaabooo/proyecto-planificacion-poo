@@ -126,4 +126,25 @@ public class ListaEstudiantes {
     public void modificarDatosEstudiante(Estudiante estudiante1, int edad){
         estudiante1.setEdad(edad);
     }
+
+    /*-----------METODOS DE SELECCION DE OBJETOS POR CRITERIO -----------*/
+    public int contabilizarEstudiantesEdad(int edad) {
+        int cont = 0;
+        for (Estudiante estudiante : ArregloEstudiantes) {
+            if (estudiante.getEdad == edad) {
+                cont++;
+            }
+        }
+        return cont;
+    }
+
+    public int contabilizarEstudiantesRangoEtario(int edad1, int edad2) {
+        int cont = 0;
+        for (Estudiante estudiante : ArregloEstudiantes) {
+            if ((estudiante.getEdad >= edad1) && (estudiante.getEdad <= edad2)) {
+                cont++;
+            }
+        }
+        return cont;
+    }
 }

@@ -92,11 +92,18 @@ public class Actividad {
     public void modificarDatosEstudiante(Estudiante estudiante1, int edad){
         estudiantes.modificarDatosEstudiante(estudiante1, edad);
     }
+
+    public int contabilizarEstudiantesEdad(int edad){
+        return estudiantes.contabilizarEstudiantesEdad(edad);
+    }
     
+    public contabilizarEstudiantesRangoEtario(int edad1, int edad2){
+        return estudiantes.contabilizarEstudiantesRangoEtario(edad1,edad2);
+    }
     
     public void MenuEstudiantes(){
 
-        String[] opcionesMenu = {"Agregar un solo Estudiante la lista","Eliminar Estudiante por rut y digito verificador","Eliminar Estudiante","Buscar Estudiante","Buscar Estudiante por rut y digito verificador","Mostrar Estudiantes","Estudiantes participantes de cierta carrera","Modificar datos Estudiante(solo rut completo)","Modificar datos Estudiante (todos los datos)","Modificar datos Estudiante (solo edad)","Modificar datos Estudiante (solo nombre)","Modificar datos Estudiante (solo nombre y carrera)","Salir"};    
+        String[] opcionesMenu = {"Agregar un solo Estudiante la lista","Eliminar Estudiante por rut y digito verificador","Eliminar Estudiante","Buscar Estudiante","Buscar Estudiante por rut y digito verificador","Mostrar Estudiantes","Estudiantes participantes de cierta carrera","Modificar datos Estudiante(solo rut completo)","Modificar datos Estudiante (todos los datos)","Modificar datos Estudiante (solo edad)","Modificar datos Estudiante (solo nombre)","Modificar datos Estudiante (solo nombre y carrera)","Contabilizar Estudiantes de cierta edad","Contabilizar Estudiantes por rango etario","Salir"};    
         String respuesta, buffer, buffer2, buffer3, buffer4, buffer5;        
         byte control = 0;
 
@@ -266,6 +273,19 @@ public class Actividad {
                         buffer4 = JOptionPane.showInputDialog("Ingrese la nueva carrera del Estudiante");
                         estudiantes.modificarDatosEstudiante(estudiantes.buscarEstudiante(Integer.parseInt(buffer), buffer2),buffer3,buffer4);
                     }
+                    JOptionPane.showMessageDialog(null, "Operación realizada correctamente");
+                    break;
+
+                case "Contabilizar Estudiantes de cierta edad":
+                    buffer = JOptionPane.showInputDialog("Ingrese la edad de los estudiantes que desea contabilizar");
+                    estudiantes.contabilizarEstudiantesEdad(buffer);
+                    JOptionPane.showMessageDialog(null, "Operación realizada correctamente");
+                    break;
+
+                case "Contabilizar Estudiantes por rango etario":
+                    buffer = JOptionPane.showInputDialog("Ingrese el intervalo inferior del rango de edades de los estudiantes que desea contabilizar");
+                    buffer2 =  JOptionPane.showInputDialog("Ingrese el intervalo superior del rango de edades de los estudiantes que desea contabilizar");
+                    estudiantes.contabilizarEstudiantesRangoEtario(buffer,buffer2);
                     JOptionPane.showMessageDialog(null, "Operación realizada correctamente");
                     break;
                     

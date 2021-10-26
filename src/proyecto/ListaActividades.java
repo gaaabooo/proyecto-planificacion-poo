@@ -131,4 +131,21 @@ public class ListaActividades {
         }
         return null;
     }
+
+    /*-----------METODOS DE SELECCION DE OBJETOS POR CRITERIO -----------*/
+    public int contabilizarEstudiantesEdadTotal(int edad) {
+        int totalEstudiantesEdad = 0;
+        for(int i = 0; i < arregloActividades.size(); i++){
+            totalEstudiantesEdad += arregloActividades.get(i).contabilizarEstudiantesEdad(edad);
+        }
+        return totalEstudiantesEdad;
+    }
+
+    public int contabilizarEstudiantesRangoEtarioTotal(int edad1, int edad2) {
+        int totalRangoEdad = 0;
+        for(int i = 0; i < arregloActividades.size(); i++){
+            totalRangoEdad += arregloActividades.get(i).contabilizarEstudiantesRangoEtario(edad1,edad2);
+        }
+        return totalRangoEdad;
+    }
 }

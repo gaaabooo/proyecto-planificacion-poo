@@ -53,7 +53,35 @@ public class DeptoExt {
     public int estudiantesParticipantesCarreraTotal(String carrera){
         return actividades.estudiantesParticipantesCarreraTotal(carrera);
     }
+
+    public Actividad buscarActividad(String nombreActividad){
+        return actividades.buscarActividad(nombreActividad);
+    }
     
+    public Actividad buscarActividad(Encargado encargado1){
+        return actividades.buscarActividad(encargado1);
+    }
+    
+    public String mostrarListadoActividades(){
+        return actividades.mostrarListadoActividades();
+    }
+
+    public Estudiante busquedaIntensivaEstudiante(Estudiante estudiante1){
+        return actividades.busquedaIntensivaEstudiante(estudiante1);
+    }
+    
+    public Estudiante busquedaIntensivaEstudiante(int rut, String dv) {
+        return actividades.busquedaIntensivaEstudiante(rut, dv);
+    }
+
+    public int contabilizarEstudiantesEdadTotal(int edad){
+        return actividades.contabilizarEstudiantesEdadTotal(edad);
+    }
+
+    public int contabilizarEstudiantesRangoEtarioTotal(int edad1, int edad2){
+        return actividades.contabilizarEstudiantesRangoEtarioTotal(edad1,edad2);
+    }
+
     /*-----------Delegacion de responsabilidades(Encargados)-----------*/
     public void agregarEncargado(Encargado encargado1) {
         encargados.agregarEncargado(encargado1);
@@ -75,44 +103,11 @@ public class DeptoExt {
         return encargados.buscarEncargado(rut);
     }
     
-    public Actividad buscarActividad(String nombreActividad){
-        return actividades.buscarActividad(nombreActividad);
-    }
-    
-    public Actividad buscarActividad(Encargado encargado1){
-        return actividades.buscarActividad(encargado1);
-    }
-    
-    public String mostrarListadoActividades(){
-        return actividades.mostrarListadoActividades();
-    }
     public String mostrarEncargados(){ 
         return encargados.mostrarEncargados();
     }
     
-    public Estudiante busquedaIntensivaEstudiante(Estudiante estudiante1){
-        return actividades.busquedaIntensivaEstudiante(estudiante1);
-    }
     
-    public Estudiante busquedaIntensivaEstudiante(int rut, String dv) {
-        return actividades.busquedaIntensivaEstudiante(rut, dv);
-    }
-    
-    public void modificarDatosEncargado(Encargado encargado1, String nombre, int rut, String dv, int edad){
-        encargados.modificarDatosEncargado(encargado1, nombre, rut, dv, edad);
-    }
-    
-    public void modificarDatosEncargado(Encargado encargado1, String nombre){
-        encargados.modificarDatosEncargado(encargado1, nombre);
-    }
-    
-    public void modificarDatosEncargado(Encargado encargado1, int rut, String dv){
-         encargados.modificarDatosEncargado(encargado1, rut, dv);
-    }
-    
-    public void modificarDatosEstudiante(Encargado encargado1, int edad){
-        encargados.modificarDatosEstudiante(encargado1, edad);
-    }
      
     public void MenuEncargado(){
         
@@ -176,9 +171,9 @@ public class DeptoExt {
                     else {
                         buffer2 = JOptionPane.showInputDialog("Ingrese el nuevo nombre del Encargado");
                         buffer3 = JOptionPane.showInputDialog("Ingrese el nuevo rut del Encargado(sin puntos ni digito verificador)");
-                        buffer4 = JOptionPane.showInputDialog("Ingrese el nuevp digito verificador del rut del Encargado");
+                        buffer4 = JOptionPane.showInputDialog("Ingrese el nuevo digito verificador del rut del Encargado");
                         buffer5 = JOptionPane.showInputDialog("Ingrese la nueva edad del Encargado");
-                        buffer6 = JOptionPane.showInputDialog("Ingrese el correo electronico del Encargado");
+                        buffer6 = JOptionPane.showInputDialog("Ingrese el nuevo correo electronico del Encargado");
                         encargados.modificarDatosEncargado(encargados.buscarEncargado(buffer), buffer2, Integer.parseInt(buffer3), buffer4, Integer.parseInt(buffer5));
                     }
                     JOptionPane.showMessageDialog(null, "Operación realizada correctamente");
@@ -232,7 +227,7 @@ public class DeptoExt {
     
     public void MenuActividades(){
         
-        String[] opcionesMenu = {"Agregar Actividad","Eliminar Actividad por nombre","Eliminar Actividad por Encargado","Eliminar Actividad","Mostrar Listado de Actividades y sus datos","Buscar Actividad por nombre","Buscar Actividad","Buscar Actividad por Encargado","Mostrar Listado de Actividades","Menu Estudiantes(Para una sola Actividad)","Total de Estudiantes participantes de cierta carrera","Busqueda Intensiva de Estudiante","Busqueda Intensiva de Estudiante por rut completo","Salir"};    
+        String[] opcionesMenu = {"Agregar Actividad","Eliminar Actividad por nombre","Eliminar Actividad por Encargado","Eliminar Actividad","Mostrar Listado de Actividades y sus datos","Buscar Actividad por nombre","Buscar Actividad","Buscar Actividad por Encargado","Mostrar Listado de Actividades","Menu Estudiantes(Para una sola Actividad)","Total de Estudiantes participantes de cierta carrera","Busqueda Intensiva de Estudiante","Busqueda Intensiva de Estudiante por rut completo","Contabilizar el total de Estudiantes de cierta edad","Contabilizar el total Estudiantes de cierto rango etario","Salir"};    
         String respuesta, buffer, buffer2, buffer3, buffer4, buffer5;        
         byte control = 0;
         
@@ -391,6 +386,19 @@ public class DeptoExt {
                     }
                     JOptionPane.showMessageDialog(null, "Operación realizada correctamente");
                     break;
+
+                case "Contabilizar el total de Estudiantes de cierta edad":
+                    buffer = JOptionPane.showInputDialog("Ingrese la edad de los estudiantes que desea contabilizar");
+                    actividades.contabilizarEstudiantesEdadTotal(buffer);
+                    JOptionPane.showMessageDialog(null, "Operación realizada correctamente");
+                    break;
+
+                case "Contabilizar el total Estudiantes de cierto rango etario":
+                    buffer = JOptionPane.showInputDialog("Ingrese el intervalo inferior del rango de edades de los estudiantes que desea contabilizar");
+                    buffer2 =  JOptionPane.showInputDialog("Ingrese el intervalo superior del rango de edades de los estudiantes que desea contabilizar");
+                    actividades.contabilizarEstudiantesRangoEtarioTotal(buffer,buffer2);
+                    JOptionPane.showMessageDialog(null, "Operación realizada correctamente");
+                    break; 
                     
                 case "Menu Estudiantes(Para una sola Actividad)":
                     buffer = JOptionPane.showInputDialog("Ingrese el nombre de la Actividad");

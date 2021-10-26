@@ -107,8 +107,24 @@ public class DeptoExt {
         return encargados.mostrarEncargados();
     }
     
+    public void modificarDatosEncargado(Encargado encargado1, String nombre, int rut, String dv, int edad, String correoElectronico){
+        encargados.modificarDatosEncargado(encargado1,nombre,rut,dv,edad,correoElectronico);
+    }
+
+    public void modificarDatosEncargado(Encargado encargado1, String nombre){
+        encargados.modificarDatosEncargado(encargado1,nombre);
+    }
+
+    public void modificarDatosEncargado(Encargado encargado1, int rut, String dv){
+        encargados.modificarDatosEncargados(encargado1,rut,dv);
+    }
+
+    public void modificarDatosEstudiante(Encargado encargado1, int edad){
+        encargados.modificarDatosEncargado(encargado1,edad);
+    }
     
-     
+    /*Menu de Encargados y Actividades*/
+
     public void MenuEncargado(){
         
         String[] opcionesMenu = {"Agregar Encargado","Mostrar Encargados","Eliminar Encargado por rut completo","Buscar Encargado","Eliminar Encargado por rut y digito verificador(por separado)","Modificar datos Encargado(todos los datos)","Modificar datos Encargado(solo rut completo)","Modificar datos Encargado(solo edad)","Modificar datos Encargado(solo nombre)","Salir"};    

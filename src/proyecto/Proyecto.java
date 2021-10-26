@@ -5,9 +5,9 @@ public class Proyecto {
     public static void main(String[] args) {
                 
         /*Ejemplo Datos Encargados*/
-        Encargado encargado1 = new Encargado("Luis Andaur",14327205,"4",42);
-        Encargado encargado2 = new Encargado("Pedro Engel",5717591,"5",70);
-        Encargado encargado3 = new Encargado("Edo Caroe",12696711,"K",46);
+        Encargado encargado1 = new Encargado("Luis Andaur",14327205,"4",42,"luchoandaur13@gmail.com");
+        Encargado encargado2 = new Encargado("Pedro Engel",5717591,"5",70,"pedroengel13@gmail.com");
+        Encargado encargado3 = new Encargado("Edo Caroe",12696711,"K",46,"edocaroe13@gmail.com");
         
         /*Ejemplo Datos Coleccion Encargados*/
         ColeccionEncargados ListaEncargados1 = new ColeccionEncargados();

@@ -22,6 +22,7 @@ public class Universidad {
         this.departamentoExt = departamentoExt;
     }
     /*-------------------------------------------------*/
+
     public String getNombreUniversidad() {
         return nombreUniversidad;
     }
@@ -45,6 +46,7 @@ public class Universidad {
     public void setDepartamentoExt(DeptoExt departamentoExt) {
         this.departamentoExt = departamentoExt;
     }
+
     /*-----------Delegacion de responsabilidades(DeptoExt)-----------*/
     public void MenuEncargado(){
         departamentoExt.MenuEncargado();
@@ -55,7 +57,7 @@ public class Universidad {
     }
      
     /*Menu principal desplegable*/
-    public void Menu(){    
+    public void Menu(){   
         
         String[] opcionesMenu = {"Menu Encargado","Menu Actividades","Crear Reporte","Salir"};    
         String respuesta;        

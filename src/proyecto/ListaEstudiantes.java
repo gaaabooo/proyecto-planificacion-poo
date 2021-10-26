@@ -29,12 +29,13 @@ public class ListaEstudiantes {
         }
         return true;
     }
-
+    /*--------------------------------------------------------------*/
+    
     public String mostrarEstudiantes() {
         int i;
         String texto = "";
         for (i = 0; i < ArregloEstudiantes.size(); i++) {
-            texto += (ArregloEstudiantes.get(i).mostrarDatosEstudiante() + "\n");
+            texto += (ArregloEstudiantes.get(i).toString() + "\n");
         }
         return texto;
     }

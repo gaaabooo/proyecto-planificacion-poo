@@ -1,5 +1,7 @@
 package proyecto;
 
+import javax.swing.JOptionPane;
+
 public class Estudiante extends Persona {
     
     private String carreraEstudiante;
@@ -29,7 +31,7 @@ public class Estudiante extends Persona {
     }
 
     @Override
-    public void participarActividad(){
-
+    public void verDatos(){
+        JOptionPane.showInputDialog(null,"Estudiante" + "\n" +"Nombre: " + nombre + "\n" + "Rut: " + rut + "-" + dv + "\n" + "Edad: " + edad + "\n" +"Carrera del Estudiante: " + carreraEstudiante,JOptionPane.INFORMATION_MESSAGE);       
     }
 }

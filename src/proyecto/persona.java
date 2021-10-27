@@ -50,6 +50,6 @@ public abstract class persona {
         this.edad = edad;
     }
 
-    public abstract void participarActividad();
+    public abstract void verDatos();
 
 }

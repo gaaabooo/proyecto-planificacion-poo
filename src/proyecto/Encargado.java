@@ -1,5 +1,7 @@
 package proyecto;
 
+import javax.swing.JOptionPane;
+
 public class Encargado extends Persona {
     
     private String correoElectronico;
@@ -31,8 +33,8 @@ public class Encargado extends Persona {
     }
 
     @Override
-    public void participarActividad() {
-        
+    public void verDatos() {
+        JOptionPane.showInputDialog(null,"Encargado" + "\n" +"Nombre: " + nombre + "\n" + "Rut: " + rut + "-" + dv + "\n" + "Edad:" + edad + "\n" +"Correo Electronico:" + correoElectronico,JOptionPane.INFORMATION_MESSAGE);
     }
     
 }

@@ -3,7 +3,7 @@ package proyecto;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
-public class Actividad {
+public class Actividad implements Disponibilidad {
     private String nombreActividad;
     private Encargado encargadoActividad;
     private ListaEstudiantes estudiantes;
@@ -295,5 +295,21 @@ public class Actividad {
                     break;
             }
         }
+    }
+    
+    /* Por implementar */
+    @Override
+    public int hayCupos() {
+
+    }
+
+    @Override
+    public boolean listaLlena() {
+        return false;
+    }
+
+    @Override
+    public boolean estadoActividad(ListaEstudiantes estudiantes) {
+        return false;
     }
 }

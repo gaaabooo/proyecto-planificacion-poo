@@ -17,8 +17,6 @@ public class Encargado extends Persona {
 
     }
     /*-------------------------------------------------*/
-    public String getNombre() {
-    
     public String getCorreoElectronico() {
         return correoElectronico;
     }

@@ -131,7 +131,7 @@ public class ListaEstudiantes {
     public int contabilizarEstudiantesEdad(int edad) {
         int cont = 0;
         for (Estudiante estudiante : ArregloEstudiantes) {
-            if (estudiante.getEdad == edad) {
+            if (estudiante.getEdad() == edad) {
                 cont++;
             }
         }
@@ -141,7 +141,7 @@ public class ListaEstudiantes {
     public int contabilizarEstudiantesRangoEtario(int edad1, int edad2) {
         int cont = 0;
         for (Estudiante estudiante : ArregloEstudiantes) {
-            if ((estudiante.getEdad >= edad1) && (estudiante.getEdad <= edad2)) {
+            if ((estudiante.getEdad() >= edad1) && (estudiante.getEdad() <= edad2)) {
                 cont++;
             }
         }

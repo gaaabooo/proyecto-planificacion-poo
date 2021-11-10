@@ -97,7 +97,7 @@ public class Actividad implements Disponibilidad {
         return estudiantes.contabilizarEstudiantesEdad(edad);
     }
     
-    public contabilizarEstudiantesRangoEtario(int edad1, int edad2){
+    public int contabilizarEstudiantesRangoEtario(int edad1, int edad2){
         return estudiantes.contabilizarEstudiantesRangoEtario(edad1,edad2);
     }
     
@@ -278,14 +278,15 @@ public class Actividad implements Disponibilidad {
 
                 case "Contabilizar Estudiantes de cierta edad":
                     buffer = JOptionPane.showInputDialog("Ingrese la edad de los estudiantes que desea contabilizar");
-                    estudiantes.contabilizarEstudiantesEdad(buffer);
+                    estudiantes.contabilizarEstudiantesEdad(Integer.parseInt(buffer));
+                    System.out.println("Hay "+ estudiantes.contabilizarEstudiantesEdad(Integer.parseInt(buffer))+ " estudiantes de "+ buffer +" años");
                     JOptionPane.showMessageDialog(null, "Operación realizada correctamente");
                     break;
 
                 case "Contabilizar Estudiantes por rango etario":
                     buffer = JOptionPane.showInputDialog("Ingrese el intervalo inferior del rango de edades de los estudiantes que desea contabilizar");
                     buffer2 =  JOptionPane.showInputDialog("Ingrese el intervalo superior del rango de edades de los estudiantes que desea contabilizar");
-                    estudiantes.contabilizarEstudiantesRangoEtario(buffer,buffer2);
+                    System.out.println("Hay "+ estudiantes.contabilizarEstudiantesRangoEtario(Integer.parseInt(buffer),Integer.parseInt(buffer2))+ " estudiantes entre "+ buffer + " y " + buffer2 +" años");
                     JOptionPane.showMessageDialog(null, "Operación realizada correctamente");
                     break;
                     
@@ -300,7 +301,7 @@ public class Actividad implements Disponibilidad {
     /* Por implementar */
     @Override
     public int hayCupos() {
-
+        return 0;
     }
 
     @Override

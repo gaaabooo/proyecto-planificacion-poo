@@ -1,17 +1,17 @@
 package proyecto;
 
-public abstract class persona {
+public abstract class Persona {
 
     protected String nombre;
     protected int rut;
     protected String dv;
     protected int edad;
 
-    public persona {
+    public Persona() {
 
     }
 
-    public persona(String nombre, int rut, String dv, int edad) {
+    public Persona(String nombre, int rut, String dv, int edad) {
         this.nombre = nombre;
         this.rut = rut;
         this.dv = dv;

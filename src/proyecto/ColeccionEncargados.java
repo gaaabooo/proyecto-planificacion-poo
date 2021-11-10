@@ -52,7 +52,7 @@ public class ColeccionEncargados {
         encargado1.setRut(rut);
         encargado1.setDv(dv);
         encargado1.setEdad(edad);
-        encargado1.setCorreoElectronico(correoElectronico)
+        encargado1.setCorreoElectronico(correoElectronico);
     }
     
     /*Si solo se quiere modificar el nombre*/
@@ -67,7 +67,7 @@ public class ColeccionEncargados {
     }
     
     /*Si solo se quiere modificar la edad*/
-    public void modificarDatosEstudiante(Encargado encargado1, int edad){
+    public void modificarDatosEncargado(Encargado encargado1, int edad){
         encargado1.setEdad(edad);
     }
 }

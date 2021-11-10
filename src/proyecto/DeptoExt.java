@@ -116,10 +116,10 @@ public class DeptoExt {
     }
 
     public void modificarDatosEncargado(Encargado encargado1, int rut, String dv){
-        encargados.modificarDatosEncargados(encargado1,rut,dv);
+        encargados.modificarDatosEncargado(encargado1,rut,dv);
     }
 
-    public void modificarDatosEstudiante(Encargado encargado1, int edad){
+    public void modificarDatosEncargado(Encargado encargado1, int edad){
         encargados.modificarDatosEncargado(encargado1,edad);
     }
     
@@ -143,7 +143,7 @@ public class DeptoExt {
                     buffer3 = JOptionPane.showInputDialog("Ingrese el digito verificador del rut del Encargado");
                     buffer4 = JOptionPane.showInputDialog("Ingrese la edad del Encargado");
                     buffer5 = JOptionPane.showInputDialog("Ingrese el correo eletronico del Encargado");
-                    Encargado encargado1 = new Encargado(buffer,Integer.parseInt(buffer2),buffer3,Integer.parseInt(buffer4));
+                    Encargado encargado1 = new Encargado(buffer,Integer.parseInt(buffer2),buffer3,Integer.parseInt(buffer4),buffer5);
                     encargados.agregarEncargado(encargado1);
                     JOptionPane.showMessageDialog(null, "Operación realizada correctamente");
                     break;
@@ -190,7 +190,7 @@ public class DeptoExt {
                         buffer4 = JOptionPane.showInputDialog("Ingrese el nuevo digito verificador del rut del Encargado");
                         buffer5 = JOptionPane.showInputDialog("Ingrese la nueva edad del Encargado");
                         buffer6 = JOptionPane.showInputDialog("Ingrese el nuevo correo electronico del Encargado");
-                        encargados.modificarDatosEncargado(encargados.buscarEncargado(buffer), buffer2, Integer.parseInt(buffer3), buffer4, Integer.parseInt(buffer5));
+                        encargados.modificarDatosEncargado(encargados.buscarEncargado(buffer), buffer2, Integer.parseInt(buffer3), buffer4, Integer.parseInt(buffer5),buffer6);
                     }
                     JOptionPane.showMessageDialog(null, "Operación realizada correctamente");
                     break;
@@ -229,7 +229,7 @@ public class DeptoExt {
                     }
                     else {
                         buffer2 = JOptionPane.showInputDialog("Ingrese la nueva edad del Encargado");
-                        encargados.modificarDatosEstudiante(encargados.buscarEncargado(buffer), Integer.parseInt(buffer2)) ;
+                        encargados.modificarDatosEncargado(encargados.buscarEncargado(buffer), Integer.parseInt(buffer2)) ;
                     }
                     JOptionPane.showMessageDialog(null, "Operación realizada correctamente");
                     break;
@@ -287,7 +287,8 @@ public class DeptoExt {
                     buffer2 = JOptionPane.showInputDialog("Ingrese el rut del Encargado(sin puntos ni digito verificador)");
                     buffer3 = JOptionPane.showInputDialog("Ingrese el digito verificador del rut del Encargado");
                     buffer4 = JOptionPane.showInputDialog("Ingrese la edad del Encargado");
-                    Encargado encargado1 = new Encargado(buffer,Integer.parseInt(buffer2),buffer3,Integer.parseInt(buffer4));
+                    buffer5 = JOptionPane.showInputDialog("Ingrese el correo electronico del Encargado");
+                    Encargado encargado1 = new Encargado(buffer,Integer.parseInt(buffer2),buffer3,Integer.parseInt(buffer4),buffer5);
                     
                     if(actividades.buscarActividad(encargado1) == null) {
                         JOptionPane.showMessageDialog(null, "La Actividad que desea eliminar no existe");
@@ -346,7 +347,8 @@ public class DeptoExt {
                     buffer2 = JOptionPane.showInputDialog("Ingrese el rut del Encargado(sin puntos ni digito verificador)");
                     buffer3 = JOptionPane.showInputDialog("Ingrese el digito verificador del rut del Encargado");
                     buffer4 = JOptionPane.showInputDialog("Ingrese la edad del Encargado");
-                    Encargado encargado2 = new Encargado(buffer,Integer.parseInt(buffer2),buffer3,Integer.parseInt(buffer4));
+                    buffer5 = JOptionPane.showInputDialog("Ingrese el correo eletronico del Encargado");
+                    Encargado encargado2 = new Encargado(buffer,Integer.parseInt(buffer2),buffer3,Integer.parseInt(buffer4),buffer5);
                     
                     if(actividades.buscarActividad(encargado2) == null){
                         JOptionPane.showMessageDialog(null, "La Actividad que desea buscar no existe");
@@ -405,14 +407,14 @@ public class DeptoExt {
 
                 case "Contabilizar el total de Estudiantes de cierta edad":
                     buffer = JOptionPane.showInputDialog("Ingrese la edad de los estudiantes que desea contabilizar");
-                    actividades.contabilizarEstudiantesEdadTotal(buffer);
+                    System.out.println("Hay "+actividades.contabilizarEstudiantesEdadTotal(Integer.parseInt(buffer))+" estudiantes de " + buffer + " años en total participando en las actividades");
                     JOptionPane.showMessageDialog(null, "Operación realizada correctamente");
                     break;
 
                 case "Contabilizar el total Estudiantes de cierto rango etario":
                     buffer = JOptionPane.showInputDialog("Ingrese el intervalo inferior del rango de edades de los estudiantes que desea contabilizar");
-                    buffer2 =  JOptionPane.showInputDialog("Ingrese el intervalo superior del rango de edades de los estudiantes que desea contabilizar");
-                    actividades.contabilizarEstudiantesRangoEtarioTotal(buffer,buffer2);
+                    buffer2 =  JOptionPane.showInputDialog("Ingrese el intervalo superior del rango de edades de los estudiantes que desea contabilizar");                    
+                    System.out.println("Hay "+actividades.contabilizarEstudiantesRangoEtarioTotal(Integer.parseInt(buffer),Integer.parseInt(buffer2))+" estudiantes en total participando en actividades de entre" + buffer + "y" + buffer2 + " años");
                     JOptionPane.showMessageDialog(null, "Operación realizada correctamente");
                     break; 
                     

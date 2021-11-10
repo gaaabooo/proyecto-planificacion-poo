@@ -101,6 +101,9 @@ public class Actividad implements Disponibilidad {
         return estudiantes.contabilizarEstudiantesRangoEtario(edad1,edad2);
     }
     
+    public int contarEstudiantes () {
+        return estudiantes.contarEstudiantes();
+    }
     public void MenuEstudiantes(){
 
         String[] opcionesMenu = {"Agregar un solo Estudiante la lista","Eliminar Estudiante por rut y digito verificador","Eliminar Estudiante","Buscar Estudiante","Buscar Estudiante por rut y digito verificador","Mostrar Estudiantes","Estudiantes participantes de cierta carrera","Modificar datos Estudiante(solo rut completo)","Modificar datos Estudiante (todos los datos)","Modificar datos Estudiante (solo edad)","Modificar datos Estudiante (solo nombre)","Modificar datos Estudiante (solo nombre y carrera)","Contabilizar Estudiantes de cierta edad","Contabilizar Estudiantes por rango etario","Salir"};    
@@ -278,16 +281,15 @@ public class Actividad implements Disponibilidad {
 
                 case "Contabilizar Estudiantes de cierta edad":
                     buffer = JOptionPane.showInputDialog("Ingrese la edad de los estudiantes que desea contabilizar");
-                    estudiantes.contabilizarEstudiantesEdad(Integer.parseInt(buffer));
-                    System.out.println("Hay "+ estudiantes.contabilizarEstudiantesEdad(Integer.parseInt(buffer))+ " estudiantes de "+ buffer +" años");
-                    JOptionPane.showMessageDialog(null, "Operación realizada correctamente");
+                    estudiantes.contabilizarEstudiantesEdad(Integer.parseInt(buffer));                   
+                    JOptionPane.showMessageDialog(null,"Hay "+ estudiantes.contabilizarEstudiantesEdad(Integer.parseInt(buffer))+ " estudiantes de "+ buffer +" años");
                     break;
 
                 case "Contabilizar Estudiantes por rango etario":
                     buffer = JOptionPane.showInputDialog("Ingrese el intervalo inferior del rango de edades de los estudiantes que desea contabilizar");
                     buffer2 =  JOptionPane.showInputDialog("Ingrese el intervalo superior del rango de edades de los estudiantes que desea contabilizar");
-                    System.out.println("Hay "+ estudiantes.contabilizarEstudiantesRangoEtario(Integer.parseInt(buffer),Integer.parseInt(buffer2))+ " estudiantes entre "+ buffer + " y " + buffer2 +" años");
-                    JOptionPane.showMessageDialog(null, "Operación realizada correctamente");
+                    estudiantes.contabilizarEstudiantesRangoEtario(Integer.parseInt(buffer),Integer.parseInt(buffer2));
+                    JOptionPane.showMessageDialog(null, "Hay "+ estudiantes.contabilizarEstudiantesRangoEtario(Integer.parseInt(buffer),Integer.parseInt(buffer2))+ " estudiantes entre "+ buffer + " y " + buffer2 +" años");
                     break;
                     
                 case "Salir":
@@ -298,19 +300,18 @@ public class Actividad implements Disponibilidad {
         }
     }
     
-    /* Por implementar */
     @Override
-    public int hayCupos() {
-        return 0;
+    public boolean hayCupos() {
+        return this.estudiantes.contarEstudiantes()<= Disponibilidad.maxParticipantes;
     }
 
     @Override
     public boolean listaLlena() {
-        return false;
+        return this.estudiantes.contarEstudiantes() == Disponibilidad.maxParticipantes;
     }
 
     @Override
     public boolean estadoActividad(ListaEstudiantes estudiantes) {
-        return false;
+        return !(this.estudiantes.contarEstudiantes() < Disponibilidad.minimoParticipantes);
     }
 }

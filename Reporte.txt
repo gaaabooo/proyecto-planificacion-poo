@@ -3,12 +3,15 @@ Nombre encargado: Luis Andaur
 ----Estudiantes Participantes----
 Estudiante: Cristiano Ronaldo
 Rut: 20360953-1
+Edad:20
 Carrera del Estudiante: Ing. de Ejecucion en Informatica
 Estudiante: Ivan Zamorano
 Rut: 20010604-k
+Edad:22
 Carrera del Estudiante: Ing Civil Informatica
 Estudiante: Mbappe
 Rut: 20320114-1
+Edad:20
 Carrera del Estudiante: Ing. Civil Industrial
 
 
@@ -17,12 +20,15 @@ Nombre encargado: Pedro Engel
 ----Estudiantes Participantes----
 Estudiante: Cristiano Ronaldo
 Rut: 20360953-1
+Edad:20
 Carrera del Estudiante: Ing. de Ejecucion en Informatica
 Estudiante: Ivan Zamorano
 Rut: 20010604-k
+Edad:22
 Carrera del Estudiante: Ing Civil Informatica
 Estudiante: Mbappe
 Rut: 20320114-1
+Edad:20
 Carrera del Estudiante: Ing. Civil Industrial
 
 
@@ -31,12 +37,15 @@ Nombre encargado: Edo Caroe
 ----Estudiantes Participantes----
 Estudiante: Cristiano Ronaldo
 Rut: 20360953-1
+Edad:20
 Carrera del Estudiante: Ing. de Ejecucion en Informatica
 Estudiante: Ivan Zamorano
 Rut: 20010604-k
+Edad:22
 Carrera del Estudiante: Ing Civil Informatica
 Estudiante: Mbappe
 Rut: 20320114-1
+Edad:20
 Carrera del Estudiante: Ing. Civil Industrial
 
 

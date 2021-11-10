@@ -407,15 +407,15 @@ public class DeptoExt {
 
                 case "Contabilizar el total de Estudiantes de cierta edad":
                     buffer = JOptionPane.showInputDialog("Ingrese la edad de los estudiantes que desea contabilizar");
-                    System.out.println("Hay "+actividades.contabilizarEstudiantesEdadTotal(Integer.parseInt(buffer))+" estudiantes de " + buffer + " años en total participando en las actividades");
-                    JOptionPane.showMessageDialog(null, "Operación realizada correctamente");
+                    actividades.contabilizarEstudiantesEdadTotal(Integer.parseInt(buffer));
+                    JOptionPane.showMessageDialog(null,"Hay "+actividades.contabilizarEstudiantesEdadTotal(Integer.parseInt(buffer))+" estudiantes de " + buffer + " años en total participando en las actividades");
                     break;
 
                 case "Contabilizar el total Estudiantes de cierto rango etario":
                     buffer = JOptionPane.showInputDialog("Ingrese el intervalo inferior del rango de edades de los estudiantes que desea contabilizar");
                     buffer2 =  JOptionPane.showInputDialog("Ingrese el intervalo superior del rango de edades de los estudiantes que desea contabilizar");                    
-                    System.out.println("Hay "+actividades.contabilizarEstudiantesRangoEtarioTotal(Integer.parseInt(buffer),Integer.parseInt(buffer2))+" estudiantes en total participando en actividades de entre" + buffer + "y" + buffer2 + " años");
-                    JOptionPane.showMessageDialog(null, "Operación realizada correctamente");
+                    actividades.contabilizarEstudiantesRangoEtarioTotal(Integer.parseInt(buffer),Integer.parseInt(buffer2));
+                    JOptionPane.showMessageDialog(null,"Hay "+actividades.contabilizarEstudiantesRangoEtarioTotal(Integer.parseInt(buffer),Integer.parseInt(buffer2))+" estudiantes en total participando en actividades de entre" + buffer + "y" + buffer2 + " años");
                     break; 
                     
                 case "Menu Estudiantes(Para una sola Actividad)":

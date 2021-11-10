@@ -147,4 +147,8 @@ public class ListaEstudiantes {
         }
         return cont;
     }
+    
+    public int contarEstudiantes() {
+        return this.ArregloEstudiantes.size();
+    }
 }

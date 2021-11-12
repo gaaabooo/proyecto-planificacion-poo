@@ -187,8 +187,7 @@ public class Actividad implements Disponibilidad {
                     break;
 
                 case "Mostrar Estudiantes":
-                    System.out.println(estudiantes.mostrarEstudiantes());
-                    JOptionPane.showMessageDialog(null, "Operación realizada correctamente");
+                    JOptionPane.showMessageDialog(null, "Lista de Estudiantes de la Actividad" + "\n"+ estudiantes.mostrarEstudiantes());
                     break;
 
                 case "Estudiantes participantes de cierta carrera":

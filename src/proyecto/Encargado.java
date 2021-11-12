@@ -27,12 +27,12 @@ public class Encargado extends Persona {
 
     @Override
     public String toString() {
-        return "Encargado\n" + "Nombre: " + nombre + "\n" + "Rut: " + rut + "-" + dv + "\n" + "Edad:" + edad + "\n" +"Correo Electronico:" + correoElectronico;
+        return "Encargado\n" + "Nombre: " + nombre + "\n" + "Rut: " + rut + "-" + dv + "\n" + "Edad:" + edad + "\n" +"Correo Electronico: " + correoElectronico;
     }
 
     @Override
     public void verDatos() {
-        JOptionPane.showInputDialog(null,"Encargado" + "\n" +"Nombre: " + nombre + "\n" + "Rut: " + rut + "-" + dv + "\n" + "Edad:" + edad + "\n" +"Correo Electronico:" + correoElectronico,JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showInputDialog(null,"Encargado" + "\n" +"Nombre: " + nombre + "\n" + "Rut: " + rut + "-" + dv + "\n" + "Edad:" + edad + "\n" +"Correo Electronico: " + correoElectronico,JOptionPane.INFORMATION_MESSAGE);
     }
     
 }

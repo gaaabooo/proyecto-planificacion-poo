@@ -148,9 +148,8 @@ public class DeptoExt {
                     JOptionPane.showMessageDialog(null, "Operación realizada correctamente");
                     break;
                     
-                case "Mostrar Encargados":
-                    System.out.println(encargados.mostrarEncargados());
-                    JOptionPane.showMessageDialog(null, "Operación realizada correctamente");
+                case "Mostrar Encargados":                    
+                    JOptionPane.showMessageDialog(null, "Coleccion de Encargados" + "\n" +encargados.mostrarEncargados());
                     break;
                     
                 case "Eliminar Encargado por rut completo":
@@ -359,14 +358,12 @@ public class DeptoExt {
                     JOptionPane.showMessageDialog(null, "La busqueda se ha completado de forma correcta");
                     break;
                     
-                case "Mostrar Listado de Actividades y sus datos":
-                    System.out.println(actividades.mostrarActividad());
-                    JOptionPane.showMessageDialog(null, "Operación realizada correctamente");
+                case "Mostrar Listado de Actividades y sus datos":                    
+                    JOptionPane.showMessageDialog(null, "Lista de Actividades y sus datos"+actividades.mostrarActividad());
                     break;
                     
                 case "Mostrar Listado de Actividades":
-                    System.out.println(actividades.mostrarListadoActividades());
-                    JOptionPane.showMessageDialog(null, "Operación realizada correctamente");
+                    JOptionPane.showMessageDialog(null,"Lista de Actividades" + "\n" + actividades.mostrarListadoActividades());
                     break;
                     
                 case "Total de Estudiantes participantes de cierta carrera":

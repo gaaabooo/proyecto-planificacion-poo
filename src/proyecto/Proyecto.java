@@ -50,6 +50,6 @@ public class Proyecto {
         /*Ejemplo Universidad*/
         Universidad universidad1 = new Universidad("Pontificia Universidad Catolica de Valparaiso", "Claudio Elórtegui Raffo",departamentoExt);
  
-        universidad1.Menu();
+        universidad1.Menu();         
     }
 }

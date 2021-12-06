@@ -117,13 +117,19 @@ public class Actividad implements Disponibilidad {
             switch(respuesta){
 
                 case "Agregar un solo Estudiante la lista":
-                    buffer = JOptionPane.showInputDialog("Ingrese el nombre del Estudiante");
-                    buffer2 = JOptionPane.showInputDialog("Ingrese el rut del Estudiante(sin puntos ni digito verificador)");
-                    buffer3 = JOptionPane.showInputDialog("Ingrese el digito verificador del rut del Estudiante");
-                    buffer4 = JOptionPane.showInputDialog("Ingrese la edad del Estudiante");
-                    buffer5 = JOptionPane.showInputDialog("Ingrese la carrera del Estudiante");
-                    Estudiante estudiante1 = new Estudiante(buffer,Integer.parseInt(buffer2),buffer3,Integer.parseInt(buffer4),buffer5);
-                    estudiantes.agregarEstudiante(estudiante1);
+                    try {
+                        buffer = JOptionPane.showInputDialog("Ingrese el nombre del Estudiante");
+                        buffer2 = JOptionPane.showInputDialog("Ingrese el rut del Estudiante(sin puntos ni digito verificador)");
+                        buffer3 = JOptionPane.showInputDialog("Ingrese el digito verificador del rut del Estudiante");
+                        buffer4 = JOptionPane.showInputDialog("Ingrese la edad del Estudiante");
+                        buffer5 = JOptionPane.showInputDialog("Ingrese la carrera del Estudiante");
+                        Estudiante estudiante1 = new Estudiante(buffer,Integer.parseInt(buffer2),buffer3,Integer.parseInt(buffer4),buffer5);
+                        if(estudiante1 == null) throw new AddDatosException();
+                        estudiantes.agregarEstudiante(estudiante1);                        
+                    } catch(AddDatosException e) {
+                        e.mostrarMensajeError();
+                    }
+                    
                     JOptionPane.showMessageDialog(null, "El Estudiante se ha agregado con exito");
                     break;
 
@@ -197,83 +203,111 @@ public class Actividad implements Disponibilidad {
                     break;
                     
                 case "Modificar datos Estudiante(solo rut completo)":
-                    buffer = JOptionPane.showInputDialog("Ingrese el rut del Estudiante(sin puntos ni digito verificador)");
-                    buffer2 = JOptionPane.showInputDialog("Ingrese el digito verificador del rut del Estudiante");                   
-                    estudiantes.buscarEstudiante(Integer.parseInt(buffer), buffer2);
-                    if(estudiantes.buscarEstudiante(Integer.parseInt(buffer), buffer2) == null) {
-                        JOptionPane.showMessageDialog(null, "El Estudiante que desea buscar no existe");
-                        break;
+                    try {
+                        buffer = JOptionPane.showInputDialog("Ingrese el rut del Estudiante(sin puntos ni digito verificador)");
+                        buffer2 = JOptionPane.showInputDialog("Ingrese el digito verificador del rut del Estudiante");                   
+                        estudiantes.buscarEstudiante(Integer.parseInt(buffer), buffer2);
+                        if(estudiantes.buscarEstudiante(Integer.parseInt(buffer), buffer2) == null) {
+                            JOptionPane.showMessageDialog(null, "El Estudiante que desea buscar no existe");
+                            break;
+                        }
+                        else {
+                            buffer = JOptionPane.showInputDialog("Ingrese el nuevo rut del Estudiante(sin puntos ni digito verificador)");
+                            buffer2 = JOptionPane.showInputDialog("Ingrese el nuevo digito verificador del rut del Estudiante");
+                            estudiantes.modificarDatosEstudiante(estudiantes.buscarEstudiante(Integer.parseInt(buffer), buffer2),buffer, buffer);
+                            if(estudiantes == null) throw new ModificarDatosException();
+                        }
+                    }catch (ModificarDatosException e){
+                        e.mostrarMensajeError();
                     }
-                    else {
-                        buffer = JOptionPane.showInputDialog("Ingrese el nuevo rut del Estudiante(sin puntos ni digito verificador)");
-                        buffer2 = JOptionPane.showInputDialog("Ingrese el nuevo digito verificador del rut del Estudiante");
-                        estudiantes.modificarDatosEstudiante(estudiantes.buscarEstudiante(Integer.parseInt(buffer), buffer2),buffer, buffer);
-                    }
+                    
                     JOptionPane.showMessageDialog(null, "Operación realizada correctamente");
                     break;
                     
                 case "Modificar datos Estudiante (todos los datos)":
-                   
-                    buffer = JOptionPane.showInputDialog("Ingrese el rut del Estudiante(sin puntos ni digito verificador)");
-                    buffer2 = JOptionPane.showInputDialog("Ingrese el digito verificador del rut del Estudiante");                              
+                    try{
+                        buffer = JOptionPane.showInputDialog("Ingrese el rut del Estudiante(sin puntos ni digito verificador)");
+                        buffer2 = JOptionPane.showInputDialog("Ingrese el digito verificador del rut del Estudiante");                              
+
+                        if(estudiantes.buscarEstudiante(Integer.parseInt(buffer), buffer2) == null) {
+                            JOptionPane.showMessageDialog(null, "El Estudiante que desea buscar no existe");
+                            break;
+                        }
+                        else {
+                            buffer = JOptionPane.showInputDialog("Ingrese el nuevo nombre del Estudiante");
+                            buffer2 = JOptionPane.showInputDialog("Ingrese el nuevo rut del Estudiante(sin puntos ni digito verificador)");
+                            buffer3 = JOptionPane.showInputDialog("Ingrese el nuevo digito verificador del rut del Estudiante");
+                            buffer4 = JOptionPane.showInputDialog("Ingrese la nueva edad del Estudiante");
+                            buffer5 = JOptionPane.showInputDialog("Ingrese la nueva carrera del Estudiante");
+                            estudiantes.modificarDatosEstudiante(estudiantes.buscarEstudiante(Integer.parseInt(buffer2), buffer3),buffer,Integer.parseInt(buffer2),buffer3,Integer.parseInt(buffer4),buffer5);
+                            if(estudiantes == null) throw new ModificarDatosException();
+                        }
+                    }catch (ModificarDatosException e){
+                        e.mostrarMensajeError();
+                    }
                     
-                    if(estudiantes.buscarEstudiante(Integer.parseInt(buffer), buffer2) == null) {
-                        JOptionPane.showMessageDialog(null, "El Estudiante que desea buscar no existe");
-                        break;
-                    }
-                    else {
-                        buffer = JOptionPane.showInputDialog("Ingrese el nuevo nombre del Estudiante");
-                        buffer2 = JOptionPane.showInputDialog("Ingrese el nuevo rut del Estudiante(sin puntos ni digito verificador)");
-                        buffer3 = JOptionPane.showInputDialog("Ingrese el nuevo digito verificador del rut del Estudiante");
-                        buffer4 = JOptionPane.showInputDialog("Ingrese la nueva edad del Estudiante");
-                        buffer5 = JOptionPane.showInputDialog("Ingrese la nueva carrera del Estudiante");
-                        estudiantes.modificarDatosEstudiante(estudiantes.buscarEstudiante(Integer.parseInt(buffer2), buffer3),buffer,Integer.parseInt(buffer2),buffer3,Integer.parseInt(buffer4),buffer5);
-                    }
                     JOptionPane.showMessageDialog(null, "Operación realizada correctamente");
                     break;
                     
-                case "Modificar datos Estudiante (solo edad)":    
-                    buffer = JOptionPane.showInputDialog("Ingrese el rut del Estudiante(sin puntos ni digito verificador)");
-                    buffer2 = JOptionPane.showInputDialog("Ingrese el digito verificador del rut del Estudiante");                               
-                                       
-                    if(estudiantes.buscarEstudiante(Integer.parseInt(buffer), buffer2) == null) {
-                        JOptionPane.showMessageDialog(null, "El Estudiante que desea buscar no existe");
-                        break;
-                    }
-                    else {
-                        buffer3 = JOptionPane.showInputDialog("Ingrese la nueva edad del Estudiante");
-                        estudiantes.modificarDatosEstudiante(estudiantes.buscarEstudiante(Integer.parseInt(buffer), buffer2),Integer.parseInt(buffer3));
-                    }
+                case "Modificar datos Estudiante (solo edad)":  
+                    try{
+                        buffer = JOptionPane.showInputDialog("Ingrese el rut del Estudiante(sin puntos ni digito verificador)");
+                        buffer2 = JOptionPane.showInputDialog("Ingrese el digito verificador del rut del Estudiante");                               
+
+                        if(estudiantes.buscarEstudiante(Integer.parseInt(buffer), buffer2) == null) {
+                            JOptionPane.showMessageDialog(null, "El Estudiante que desea buscar no existe");
+                            break;
+                        }
+                        else {
+                            buffer3 = JOptionPane.showInputDialog("Ingrese la nueva edad del Estudiante");
+                            estudiantes.modificarDatosEstudiante(estudiantes.buscarEstudiante(Integer.parseInt(buffer), buffer2),Integer.parseInt(buffer3));
+                            if(estudiantes == null) throw new ModificarDatosException();
+                        }
+                    }catch(ModificarDatosException e){
+                        e.mostrarMensajeError();
+                    }                    
+                    
                     JOptionPane.showMessageDialog(null, "Operación realizada correctamente");
                     break;
                     
                 case "Modificar datos Estudiante (solo nombre)":
-                    buffer = JOptionPane.showInputDialog("Ingrese el rut del Estudiante(sin puntos ni digito verificador)");
-                    buffer2 = JOptionPane.showInputDialog("Ingrese el digito verificador del rut del Estudiante");                               
-                                       
-                    if(estudiantes.buscarEstudiante(Integer.parseInt(buffer), buffer2) == null) {
-                        JOptionPane.showMessageDialog(null, "El Estudiante que desea buscar no existe");
-                        break;
+                    try{
+                        buffer = JOptionPane.showInputDialog("Ingrese el rut del Estudiante(sin puntos ni digito verificador)");
+                        buffer2 = JOptionPane.showInputDialog("Ingrese el digito verificador del rut del Estudiante");                               
+
+                        if(estudiantes.buscarEstudiante(Integer.parseInt(buffer), buffer2) == null) {
+                            JOptionPane.showMessageDialog(null, "El Estudiante que desea buscar no existe");
+                            break;
+                        }
+                        else {
+                            buffer3 = JOptionPane.showInputDialog("Ingrese el nuevo nombre del Estudiante");
+                            estudiantes.modificarDatosEstudiante(estudiantes.buscarEstudiante(Integer.parseInt(buffer), buffer2),buffer3);
+                            if(estudiantes == null) throw new ModificarDatosException();
+                        }
+                    }catch(ModificarDatosException e){
+                        e.mostrarMensajeError();
                     }
-                    else {
-                        buffer3 = JOptionPane.showInputDialog("Ingrese el nuevo nombre del Estudiante");
-                        estudiantes.modificarDatosEstudiante(estudiantes.buscarEstudiante(Integer.parseInt(buffer), buffer2),buffer3);
-                    }
+                    
                     JOptionPane.showMessageDialog(null, "Operación realizada correctamente");
                     break;
                     
                 case "Modificar datos Estudiante (solo nombre y carrera)":
-                    buffer = JOptionPane.showInputDialog("Ingrese el rut del Estudiante(sin puntos ni digito verificador)");
-                    buffer2 = JOptionPane.showInputDialog("Ingrese el digito verificador del rut del Estudiante");                               
-                                       
-                    if(estudiantes.buscarEstudiante(Integer.parseInt(buffer), buffer2) == null) {
-                        JOptionPane.showMessageDialog(null, "El Estudiante que desea buscar no existe");
-                        break;
-                    }
-                    else {
-                        buffer3 = JOptionPane.showInputDialog("Ingrese el nuevo nombre del Estudiante");
-                        buffer4 = JOptionPane.showInputDialog("Ingrese la nueva carrera del Estudiante");
-                        estudiantes.modificarDatosEstudiante(estudiantes.buscarEstudiante(Integer.parseInt(buffer), buffer2),buffer3,buffer4);
+                    try{
+                        buffer = JOptionPane.showInputDialog("Ingrese el rut del Estudiante(sin puntos ni digito verificador)");
+                        buffer2 = JOptionPane.showInputDialog("Ingrese el digito verificador del rut del Estudiante");                               
+
+                        if(estudiantes.buscarEstudiante(Integer.parseInt(buffer), buffer2) == null) {
+                            JOptionPane.showMessageDialog(null, "El Estudiante que desea buscar no existe");
+                            break;
+                        }
+                        else {
+                            buffer3 = JOptionPane.showInputDialog("Ingrese el nuevo nombre del Estudiante");
+                            buffer4 = JOptionPane.showInputDialog("Ingrese la nueva carrera del Estudiante");
+                            estudiantes.modificarDatosEstudiante(estudiantes.buscarEstudiante(Integer.parseInt(buffer), buffer2),buffer3,buffer4);
+                            if(estudiantes == null) throw new ModificarDatosException();
+                        }
+                    }catch(ModificarDatosException e){
+                        e.mostrarMensajeError();
                     }
                     JOptionPane.showMessageDialog(null, "Operación realizada correctamente");
                     break;

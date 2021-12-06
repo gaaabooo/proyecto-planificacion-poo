@@ -138,98 +138,143 @@ public class DeptoExt {
             switch(respuesta){
                 
                 case "Agregar Encargado":
-                    buffer = JOptionPane.showInputDialog("Ingrese el nombre del Encargado");
-                    buffer2 = JOptionPane.showInputDialog("Ingrese el rut del Encargado(sin puntos ni digito verificador)");
-                    buffer3 = JOptionPane.showInputDialog("Ingrese el digito verificador del rut del Encargado");
-                    buffer4 = JOptionPane.showInputDialog("Ingrese la edad del Encargado");
-                    buffer5 = JOptionPane.showInputDialog("Ingrese el correo eletronico del Encargado");
-                    Encargado encargado1 = new Encargado(buffer,Integer.parseInt(buffer2),buffer3,Integer.parseInt(buffer4),buffer5);
-                    encargados.agregarEncargado(encargado1);
+                    try {
+                        buffer = JOptionPane.showInputDialog("Ingrese el nombre del Encargado");
+                        buffer2 = JOptionPane.showInputDialog("Ingrese el rut del Encargado(sin puntos ni digito verificador)");
+                        buffer3 = JOptionPane.showInputDialog("Ingrese el digito verificador del rut del Encargado");
+                        buffer4 = JOptionPane.showInputDialog("Ingrese la edad del Encargado");
+                        buffer5 = JOptionPane.showInputDialog("Ingrese el correo eletronico del Encargado");
+                        Encargado encargado1 = new Encargado(buffer,Integer.parseInt(buffer2),buffer3,Integer.parseInt(buffer4),buffer5);
+                        if (encargado1 == null) throw new AddDatosException();                       
+                        encargados.agregarEncargado(encargado1);                        
+                    }catch (AddDatosException e) {
+                        e.mostrarMensajeError();
+                    }
+                    
                     JOptionPane.showMessageDialog(null, "Operación realizada correctamente");
                     break;
                     
-                case "Mostrar Encargados":                    
+                case "Mostrar Encargados": 
                     JOptionPane.showMessageDialog(null, "Coleccion de Encargados" + "\n" +encargados.mostrarEncargados());
                     break;
                     
                 case "Eliminar Encargado por rut completo":
-                    buffer = JOptionPane.showInputDialog("Ingrese el rut del Encargado(sin puntos y con guion");                    
-                    encargados.eliminarEncargado(buffer);
+                    try {
+                        buffer = JOptionPane.showInputDialog("Ingrese el rut del Encargado(sin puntos y con guion");                    
+                        encargados.eliminarEncargado(buffer);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    
                     JOptionPane.showMessageDialog(null, "Operación realizada correctamente");
                     break;
                     
-                case "Buscar Encargado":                    
-                    buffer = JOptionPane.showInputDialog("Ingrese el rut del Encargado(sin puntos y con guion");
+                case "Buscar Encargado": 
+                    try{
+                        buffer = JOptionPane.showInputDialog("Ingrese el rut del Encargado(sin puntos y con guion");
+
+                        if(encargados.buscarEncargado(buffer)== null) {
+                            JOptionPane.showMessageDialog(null, "El encargado no existe");
+                        }
+                        else {
+                            JOptionPane.showMessageDialog(null, "El encargado si exite");
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                     
-                    if(encargados.buscarEncargado(buffer)== null) {
-                        JOptionPane.showMessageDialog(null, "El encargado no existe");
-                    }
-                    else {
-                        JOptionPane.showMessageDialog(null, "El encargado si exite");
-                    }
                     JOptionPane.showMessageDialog(null, "Operación realizada correctamente");
                     break;
                     
                 case "Eliminar Encargado por rut y digito verificador(por separado)" :
-                    buffer = JOptionPane.showInputDialog("Ingrese el rut del Encargado(sin puntos ni digito verificador)");
-                    buffer2 = JOptionPane.showInputDialog("Ingrese el digito verificador del Encargado");
-                    encargados.eliminarEncargado(Integer.parseInt(buffer), buffer2);
+                    try{
+                        buffer = JOptionPane.showInputDialog("Ingrese el rut del Encargado(sin puntos ni digito verificador)");
+                        buffer2 = JOptionPane.showInputDialog("Ingrese el digito verificador del Encargado");
+                        encargados.eliminarEncargado(Integer.parseInt(buffer), buffer2);
+                    } catch(Exception e) {
+                        e.printStackTrace();
+                    }
+                    
                     JOptionPane.showMessageDialog(null, "Operación realizada correctamente");
                     break;
                     
                 case "Modificar datos Encargado(todos los datos)":
-                    buffer = JOptionPane.showInputDialog("Ingrese el rut del Encargado");
-                    if(encargados.buscarEncargado(buffer) == null){
-                        JOptionPane.showMessageDialog(null, "El Encargado que desea modificar no existe");
-                        break;  
+                    try {
+                        buffer = JOptionPane.showInputDialog("Ingrese el rut del Encargado");
+                        if(encargados.buscarEncargado(buffer) == null){
+                            JOptionPane.showMessageDialog(null, "El Encargado que desea modificar no existe");
+                            break;  
+                        }
+                        else {
+                            buffer2 = JOptionPane.showInputDialog("Ingrese el nuevo nombre del Encargado");
+                            buffer3 = JOptionPane.showInputDialog("Ingrese el nuevo rut del Encargado(sin puntos ni digito verificador)");
+                            buffer4 = JOptionPane.showInputDialog("Ingrese el nuevo digito verificador del rut del Encargado");
+                            buffer5 = JOptionPane.showInputDialog("Ingrese la nueva edad del Encargado");
+                            buffer6 = JOptionPane.showInputDialog("Ingrese el nuevo correo electronico del Encargado");
+                            encargados.modificarDatosEncargado(encargados.buscarEncargado(buffer), buffer2, Integer.parseInt(buffer3), buffer4, Integer.parseInt(buffer5),buffer6);
+                            if(encargados == null) throw new ModificarDatosException();
+                        }
+                    } catch (ModificarDatosException e) {
+                        e.mostrarMensajeError();
                     }
-                    else {
-                        buffer2 = JOptionPane.showInputDialog("Ingrese el nuevo nombre del Encargado");
-                        buffer3 = JOptionPane.showInputDialog("Ingrese el nuevo rut del Encargado(sin puntos ni digito verificador)");
-                        buffer4 = JOptionPane.showInputDialog("Ingrese el nuevo digito verificador del rut del Encargado");
-                        buffer5 = JOptionPane.showInputDialog("Ingrese la nueva edad del Encargado");
-                        buffer6 = JOptionPane.showInputDialog("Ingrese el nuevo correo electronico del Encargado");
-                        encargados.modificarDatosEncargado(encargados.buscarEncargado(buffer), buffer2, Integer.parseInt(buffer3), buffer4, Integer.parseInt(buffer5),buffer6);
-                    }
+                    
                     JOptionPane.showMessageDialog(null, "Operación realizada correctamente");
                     break;
                     
                 case "Modificar datos Encargado(solo rut completo)":
-                    buffer = JOptionPane.showInputDialog("Ingrese el rut del Encargado");
-                    if(encargados.buscarEncargado(buffer) == null){
-                        JOptionPane.showMessageDialog(null, "El Encargado que desea modificar no existe");
-                        break;  
+                    try {
+                        buffer = JOptionPane.showInputDialog("Ingrese el rut del Encargado");
+                        if(encargados.buscarEncargado(buffer) == null){
+                            JOptionPane.showMessageDialog(null, "El Encargado que desea modificar no existe");
+                            break;  
+                        }
+                        else {
+                            buffer2 = JOptionPane.showInputDialog("Ingrese el digito verificador del Encargado");
+                            encargados.modificarDatosEncargado(encargados.buscarEncargado(buffer),Integer.parseInt(buffer), buffer2);
+                            if(encargados == null) throw new ModificarDatosException();
+                        }
+                    } catch (ModificarDatosException e) {
+                        e.mostrarMensajeError();
                     }
-                    else {
-                        buffer2 = JOptionPane.showInputDialog("Ingrese el digito verificador del Encargado");
-                        encargados.modificarDatosEncargado(encargados.buscarEncargado(buffer),Integer.parseInt(buffer), buffer2);
-                    }
+                    
                     JOptionPane.showMessageDialog(null, "Operación realizada correctamente");
                     break;
                     
                 case "Modificar datos Encargado(solo nombre)":
-                    buffer = JOptionPane.showInputDialog("Ingrese el rut del Encargado");
-                    if(encargados.buscarEncargado(buffer) == null){
-                        JOptionPane.showMessageDialog(null, "El Encargado que desea modificar no existe");
-                        break;  
+                    try {
+                        buffer = JOptionPane.showInputDialog("Ingrese el rut del Encargado");
+                        if(encargados.buscarEncargado(buffer) == null){
+                            JOptionPane.showMessageDialog(null, "El Encargado que desea modificar no existe");
+                            break;  
+                        }
+                        else {
+                            buffer2 = JOptionPane.showInputDialog("Ingrese el nuevo nombre del Encargado");
+                            encargados.modificarDatosEncargado(encargados.buscarEncargado(buffer),buffer2);
+                            if(encargados == null) throw new ModificarDatosException();
+                        }
+                    } catch (ModificarDatosException e) {
+                        e.mostrarMensajeError();
                     }
-                    else {
-                        buffer2 = JOptionPane.showInputDialog("Ingrese el nuevo nombre del Encargado");
-                        encargados.modificarDatosEncargado(encargados.buscarEncargado(buffer),buffer2);
-                    }
+                    
                     JOptionPane.showMessageDialog(null, "Operación realizada correctamente");
                     break;
                     
                 case "Modificar datos Encargado(solo edad)":
-                    buffer = JOptionPane.showInputDialog("Ingrese el rut del Encargado");
-                    if(encargados.buscarEncargado(buffer) == null){
-                        JOptionPane.showMessageDialog(null, "El Encargado que desea modificar no existe");
-                        break;  
+                    try {
+                        buffer = JOptionPane.showInputDialog("Ingrese el rut del Encargado");
+                        if(encargados.buscarEncargado(buffer) == null){
+                            JOptionPane.showMessageDialog(null, "El Encargado que desea modificar no existe");
+                            break;  
+                        }
+                        else {
+                            buffer2 = JOptionPane.showInputDialog("Ingrese la nueva edad del Encargado");
+                            encargados.modificarDatosEncargado(encargados.buscarEncargado(buffer), Integer.parseInt(buffer2));
+                            if(encargados == null) throw new ModificarDatosException();
+                        }
+                    } catch (ModificarDatosException e) {
+                        e.mostrarMensajeError();
                     }
-                    else {
-                        buffer2 = JOptionPane.showInputDialog("Ingrese la nueva edad del Encargado");
-                        encargados.modificarDatosEncargado(encargados.buscarEncargado(buffer), Integer.parseInt(buffer2)) ;
-                    }
+                    
                     JOptionPane.showMessageDialog(null, "Operación realizada correctamente");
                     break;
                     
@@ -253,108 +298,141 @@ public class DeptoExt {
             switch(respuesta){
                 
                 case "Agregar Actividad":
-                    buffer = JOptionPane.showInputDialog("Ingrese el nombre de la Actividad");
-                    buffer2 = JOptionPane.showInputDialog("Ingrese el rut del Encargado(sin puntos, con guion y digito verificador)");
-                    Actividad actividad1 = new Actividad();
-                    actividad1.setNombreActividad(buffer);
+                    try {
+                        buffer = JOptionPane.showInputDialog("Ingrese el nombre de la Actividad");
+                        buffer2 = JOptionPane.showInputDialog("Ingrese el rut del Encargado(sin puntos, con guion y digito verificador)");
+                        Actividad actividad1 = new Actividad();
+                        actividad1.setNombreActividad(buffer);
+
+                        if(encargados.buscarEncargado(buffer2) == null){
+                            JOptionPane.showMessageDialog(null, "El encargado no existe");
+                        }
+                        else {
+                            actividad1.setEncargadoActividad(buscarEncargado(buffer2));
+                        }
+                        actividades.agregarActividad(actividad1);
+                    } catch (Exception e){
+                        e.printStackTrace();
+                    }
                     
-                    if(encargados.buscarEncargado(buffer2) == null){
-                        JOptionPane.showMessageDialog(null, "El encargado no existe");
-                    }
-                    else {
-                        actividad1.setEncargadoActividad(buscarEncargado(buffer2));
-                    }
-                    actividades.agregarActividad(actividad1);
                     JOptionPane.showMessageDialog(null, "La actividad se ha agregado a la lista de forma correcta");
                     break;
                     
                 case "Eliminar Actividad por nombre":
+                    try {
+                        buffer = JOptionPane.showInputDialog("Ingrese el nombre de la Actividad que desea eliminar");
+                        if(actividades.buscarActividad(buffer)== null) {
+                            JOptionPane.showMessageDialog(null, "La Actividad que desea eliminar no existe");
+                        }
+                        else{
+                            actividades.eliminarActividad(buffer);
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                     
-                    buffer = JOptionPane.showInputDialog("Ingrese el nombre de la Actividad que desea eliminar");
-                    if(actividades.buscarActividad(buffer)== null) {
-                        JOptionPane.showMessageDialog(null, "La Actividad que desea eliminar no existe");
-                    }
-                    else{
-                        actividades.eliminarActividad(buffer);
-                    }
                     JOptionPane.showMessageDialog(null, "La actividad se ha eliminado de forma correcta");
                     break;
                     
                 case "Eliminar Actividad por Encargado":
-                    
-                    buffer = JOptionPane.showInputDialog("Ingrese el nombre del Encargado");
-                    buffer2 = JOptionPane.showInputDialog("Ingrese el rut del Encargado(sin puntos ni digito verificador)");
-                    buffer3 = JOptionPane.showInputDialog("Ingrese el digito verificador del rut del Encargado");
-                    buffer4 = JOptionPane.showInputDialog("Ingrese la edad del Encargado");
-                    buffer5 = JOptionPane.showInputDialog("Ingrese el correo electronico del Encargado");
-                    Encargado encargado1 = new Encargado(buffer,Integer.parseInt(buffer2),buffer3,Integer.parseInt(buffer4),buffer5);
-                    
-                    if(actividades.buscarActividad(encargado1) == null) {
-                        JOptionPane.showMessageDialog(null, "La Actividad que desea eliminar no existe");
+                    try {
+                        buffer = JOptionPane.showInputDialog("Ingrese el nombre del Encargado");
+                        buffer2 = JOptionPane.showInputDialog("Ingrese el rut del Encargado(sin puntos ni digito verificador)");
+                        buffer3 = JOptionPane.showInputDialog("Ingrese el digito verificador del rut del Encargado");
+                        buffer4 = JOptionPane.showInputDialog("Ingrese la edad del Encargado");
+                        buffer5 = JOptionPane.showInputDialog("Ingrese el correo electronico del Encargado");
+                        Encargado encargado1 = new Encargado(buffer,Integer.parseInt(buffer2),buffer3,Integer.parseInt(buffer4),buffer5);
+
+                        if(actividades.buscarActividad(encargado1) == null) {
+                            JOptionPane.showMessageDialog(null, "La Actividad que desea eliminar no existe");
+                        }
+                        else{
+                            actividades.eliminarActividad(encargado1);
+                        }
+                    } catch(Exception e){
+                        e.printStackTrace();
                     }
-                    else{
-                        actividades.eliminarActividad(encargado1);
-                    }
+                    
                     JOptionPane.showMessageDialog(null, "La actividad se ha eliminado de forma correcta");
                     break;
                     
-                case "Eliminar Actividad":   
                     
-                    buffer = JOptionPane.showInputDialog("Ingrese el nombre de la Actividad");
-                    buffer2 = JOptionPane.showInputDialog("Ingrese el rut del Encargado(sin puntos, con guion y digito verificador)");
-                    Actividad actividad2 = new Actividad();
-              
-                    if(buscarEncargado(buffer2) == null){
-                        JOptionPane.showMessageDialog(null, "La Actividad que desea eliminar no existe");
+                case "Eliminar Actividad":   
+                    try {
+                        buffer = JOptionPane.showInputDialog("Ingrese el nombre de la Actividad");
+                        buffer2 = JOptionPane.showInputDialog("Ingrese el rut del Encargado(sin puntos, con guion y digito verificador)");
+                        Actividad actividad2 = new Actividad();
+
+                        if(buscarEncargado(buffer2) == null){
+                            JOptionPane.showMessageDialog(null, "La Actividad que desea eliminar no existe");
+                        }
+                        else {
+                            actividad2.setEncargadoActividad(buscarEncargado(buffer2));
+                        }
+                        actividades.eliminarActividad(actividad2);
+                    } catch (Exception e){
+                        e.printStackTrace();
                     }
-                    else {
-                        actividad2.setEncargadoActividad(buscarEncargado(buffer2));
-                    }
-                    actividades.eliminarActividad(actividad2);
+                    
                     JOptionPane.showMessageDialog(null, "La actividad se ha eliminado de forma correcta");
                     break;
                     
                 case "Buscar Actividad por nombre":
-                    buffer = JOptionPane.showInputDialog("Ingrese el nombre de la Actividad");
+                    try{
+                        buffer = JOptionPane.showInputDialog("Ingrese el nombre de la Actividad");
+
+                        if(actividades.buscarActividad(buffer)== null){
+                             JOptionPane.showMessageDialog(null, "La Actividad que desea buscar no existe");
+                        }
+                        else {
+                            JOptionPane.showMessageDialog(null, "La Actividad si se encuentra dentro de la lista");
+                        }
+                    } catch (Exception e){
+                        e.printStackTrace();
+                    }
                     
-                    if(actividades.buscarActividad(buffer)== null){
-                         JOptionPane.showMessageDialog(null, "La Actividad que desea buscar no existe");
-                    }
-                    else {
-                        JOptionPane.showMessageDialog(null, "La Actividad si se encuentra dentro de la lista");
-                    }
                     JOptionPane.showMessageDialog(null, "La busqueda se ha completado de forma correcta");
                     break;
                     
                 case "Buscar Actividad":
-                    buffer = JOptionPane.showInputDialog("Ingrese el nombre de la Actividad");
-                    buffer2 = JOptionPane.showInputDialog("Ingrese el rut del Encargado(sin puntos, con guion y digito verificador)");
-                    Actividad actividad3 = new Actividad();
-                    actividad3.setNombreActividad(buffer);
+                    try {
+                        buffer = JOptionPane.showInputDialog("Ingrese el nombre de la Actividad");
+                        buffer2 = JOptionPane.showInputDialog("Ingrese el rut del Encargado(sin puntos, con guion y digito verificador)");
+                        Actividad actividad3 = new Actividad();
+                        actividad3.setNombreActividad(buffer);
+
+                        if(encargados.buscarEncargado(buffer2) == null){
+                            JOptionPane.showMessageDialog(null, "El encargado no existe");
+                        }
+                        else {
+                            actividad3.setEncargadoActividad(buscarEncargado(buffer2));
+                        }
+                    } catch (Exception e){
+                        e.printStackTrace();
+                    }
                     
-                    if(encargados.buscarEncargado(buffer2) == null){
-                        JOptionPane.showMessageDialog(null, "El encargado no existe");
-                    }
-                    else {
-                        actividad3.setEncargadoActividad(buscarEncargado(buffer2));
-                    }
                     JOptionPane.showMessageDialog(null, "La busqueda se ha completado de forma correcta");
                     break;
                     
                 case "Buscar Actividad por Encargado":
-                    buffer = JOptionPane.showInputDialog("Ingrese el nombre del Encargado");
-                    buffer2 = JOptionPane.showInputDialog("Ingrese el rut del Encargado(sin puntos ni digito verificador)");
-                    buffer3 = JOptionPane.showInputDialog("Ingrese el digito verificador del rut del Encargado");
-                    buffer4 = JOptionPane.showInputDialog("Ingrese la edad del Encargado");
-                    buffer5 = JOptionPane.showInputDialog("Ingrese el correo eletronico del Encargado");
-                    Encargado encargado2 = new Encargado(buffer,Integer.parseInt(buffer2),buffer3,Integer.parseInt(buffer4),buffer5);
+                    try {
+                        buffer = JOptionPane.showInputDialog("Ingrese el nombre del Encargado");
+                        buffer2 = JOptionPane.showInputDialog("Ingrese el rut del Encargado(sin puntos ni digito verificador)");
+                        buffer3 = JOptionPane.showInputDialog("Ingrese el digito verificador del rut del Encargado");
+                        buffer4 = JOptionPane.showInputDialog("Ingrese la edad del Encargado");
+                        buffer5 = JOptionPane.showInputDialog("Ingrese el correo eletronico del Encargado");
+                        Encargado encargado2 = new Encargado(buffer,Integer.parseInt(buffer2),buffer3,Integer.parseInt(buffer4),buffer5);
+
+                        if(actividades.buscarActividad(encargado2) == null){
+                            JOptionPane.showMessageDialog(null, "La Actividad que desea buscar no existe");
+                        }
+                        else {
+                            JOptionPane.showMessageDialog(null, "La Actividad si se encuentra dentro de la lista");
+                        }
+                    } catch (Exception e){
+                        e.printStackTrace();
+                    }
                     
-                    if(actividades.buscarActividad(encargado2) == null){
-                        JOptionPane.showMessageDialog(null, "La Actividad que desea buscar no existe");
-                    }
-                    else {
-                        JOptionPane.showMessageDialog(null, "La Actividad si se encuentra dentro de la lista");
-                    }
                     JOptionPane.showMessageDialog(null, "La busqueda se ha completado de forma correcta");
                     break;
                     
@@ -386,19 +464,24 @@ public class DeptoExt {
                     break;
                     
                 case "Busqueda Intensiva de Estudiante":
-                    buffer = JOptionPane.showInputDialog("Ingrese el nombre del Estudiante");
-                    buffer2 = JOptionPane.showInputDialog("Ingrese el rut del Estudiante (sin puntos ni digito verificador)");
-                    buffer3 = JOptionPane.showInputDialog("Ingrese el digito verificador del rut del Estudiante");
-                    buffer4 = JOptionPane.showInputDialog("Ingrese la edad del Encargado");
-                    buffer5 = JOptionPane.showInputDialog("Ingrese la carrera del Estudiante");
-                    Estudiante estudiante1 = new Estudiante(buffer,Integer.parseInt(buffer2),buffer3,Integer.parseInt(buffer4),buffer5);
+                    try {
+                        buffer = JOptionPane.showInputDialog("Ingrese el nombre del Estudiante");
+                        buffer2 = JOptionPane.showInputDialog("Ingrese el rut del Estudiante (sin puntos ni digito verificador)");
+                        buffer3 = JOptionPane.showInputDialog("Ingrese el digito verificador del rut del Estudiante");
+                        buffer4 = JOptionPane.showInputDialog("Ingrese la edad del Encargado");
+                        buffer5 = JOptionPane.showInputDialog("Ingrese la carrera del Estudiante");
+                        Estudiante estudiante1 = new Estudiante(buffer,Integer.parseInt(buffer2),buffer3,Integer.parseInt(buffer4),buffer5);
+
+                        if(actividades.busquedaIntensivaEstudiante(estudiante1) == null) {
+                            JOptionPane.showMessageDialog(null, "El estudiante que desea buscar no existe");
+                        }
+                        else {
+                            JOptionPane.showMessageDialog(null, "El estudiante que se buscar se ha encontrado de forma exitosa");
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                     
-                    if(actividades.busquedaIntensivaEstudiante(estudiante1) == null) {
-                        JOptionPane.showMessageDialog(null, "El estudiante que desea buscar no existe");
-                    }
-                    else {
-                        JOptionPane.showMessageDialog(null, "El estudiante que se buscar se ha encontrado de forma exitosa");
-                    }
                     JOptionPane.showMessageDialog(null, "Operación realizada correctamente");
                     break;
 
